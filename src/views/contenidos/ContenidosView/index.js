@@ -30,19 +30,18 @@ const ContenidosView = () => {
   const [openObjectivoDialog, setOpenObjectivoDialog] = useState(false);
   const [objetivos, setObjetivos] = useState([]);
 
-  
-  const [filteredUsers, setFilteredUsers] = useState([]);
-
+  const [filteredResults, setFilteredResults] = useState([]);
 
   const populateObjetivos = async (id = clientId) => {
     const objetivos = await list(`clients/${id}/objetivos`, 'createdAt');
     setObjetivos(objetivos);
+    setFilteredResults(objetivos);
   };
 
-  const filterUsers = (query) => {
-    // const regex = new RegExp(query);
-    // const result = profes.filter(p => p.name.match(regex));
-    // setFilteredUsers(result);
+  const filterResults = (query) => {
+    const regex = new RegExp(query);
+    const result = objetivos.filter(p => p.nombre.match(regex));
+    setFilteredResults(result);
   };
 
   const handleSaveObjectivo = (objetivoId) => {
@@ -68,14 +67,13 @@ const ContenidosView = () => {
     >
       <Container maxWidth={false}>
         <Toolbar
-          filterUsers={filterUsers}
-          profes={filteredUsers}
+          filterUsers={filterResults}
           setOpenObjectivoDialog={setOpenObjectivoDialog}
         />
         <Box mt={3}>
           <Results
             ambitos={AMBITOS}
-            objetivos={objetivos}
+            objetivos={filteredResults}
           />
         </Box>
       </Container>

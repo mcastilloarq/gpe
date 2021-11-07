@@ -90,12 +90,7 @@ export default function SimpleModal({ item, openDialog, onSave, onClose, clientI
   const [indicadores, setIndicadores] = useState(options.indicadores);
   const [objetivos, setObjetivos] = useState(options.objetivos);
 
-  const [values, setValues] = useState({
-    nombre: item.nombre ? item.nombre : '',
-    titulo: item.titulo ? item.titulo : '',
-    indicadores: item.indicadores ? item.indicadores : [],
-    createdAt: item.createdAt ? item.createdAt : (new Date().getTime())
-  });
+  const [values, setValues] = useState({});
 
   const handleClose = () => {
     onClose();
@@ -198,7 +193,7 @@ export default function SimpleModal({ item, openDialog, onSave, onClose, clientI
                             <Box key={i} display={'flex'} alignItems="center" className={classes.indicador}>
                               <Checkbox
                                 name={indicador.id}
-                                checked={values.indicadores.includes(indicador.id)}
+                                checked={values.indicadores?.includes(indicador.id)}
                                 onChange={handleChangeIndicador}
                                 inputProps={{ "aria-label": "primary checkbox" }}
                               />
@@ -212,23 +207,6 @@ export default function SimpleModal({ item, openDialog, onSave, onClose, clientI
                   </Box>
                 ))}
               </Box>
-
-
-              {/* {indicadores && indicadores.map((indicador, i) => (
-                <Box key={i} display={'flex'} alignItems="center">
-                  <Checkbox
-                    name={indicador.id}
-                    checked={values.indicadores.includes(indicador.id)}
-                    onChange={handleChangeIndicador}
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                  />
-                  <Typography variant="body1" mb={5}>
-                    {indicador.nombre}
-                  </Typography>
-                </Box>
-              ))} */}
-
-
             </Box>
 
           </form>

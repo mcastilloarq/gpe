@@ -100,7 +100,7 @@ const RegisterView = () => {
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
-                    align='justify'
+                    align='justifyContent'
                   >
                     Usa una dirección de email válida para crear una cuenta. Te enviaremos un email de confirmación para asegurarnos de que no eres un robot. Esa será la única vez que usemos tu dirección. No te enviaremos nada, ni compartiremos tus datos con nadie.
                   </Typography>

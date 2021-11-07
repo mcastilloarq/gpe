@@ -33,7 +33,7 @@ const ContenidosView = () => {
   const [programas, setProgramas] = useState([]);
 
   
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
 
 
   const populateObjetivos = async (id = clientId) => {
@@ -49,12 +49,13 @@ const ContenidosView = () => {
   const populateProgramas = async (id = clientId) => {
     const programas = await list(`clients/${id}/programas`, 'createdAt');
     setProgramas(programas);
+    setFilteredResults(programas);
   };
 
-  const filterUsers = (query) => {
-    // const regex = new RegExp(query);
-    // const result = profes.filter(p => p.name.match(regex));
-    // setFilteredUsers(result);
+  const filterResults = (query) => {
+    const regex = new RegExp(query);
+    const result = programas.filter(p => p.nombre.match(regex));
+    setFilteredResults(result);
   };
 
   const handleSavePrograma = (programaId) => {
@@ -83,14 +84,13 @@ const ContenidosView = () => {
     >
       <Container maxWidth={false}>
         <Toolbar
-          filterUsers={filterUsers}
-          profes={filteredUsers}
+          filterResults={filterResults}
           setOpenProgramaDialog={setOpenProgramaDialog}
         />
         <Box mt={3}>
           <Results
             ambitos={AMBITOS}
-            programas={programas}
+            programas={filteredResults}
           />
         </Box>
       </Container>

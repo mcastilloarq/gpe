@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Toolbar = ({ className, filterUsers, setOpenProgramaDialog, ...rest }) => {
+const Toolbar = ({ className, filterResults, setOpenProgramaDialog, ...rest }) => {
   const classes = useStyles();
 
   const handleOnChange = (e) => {
-    filterUsers(e.target.value);
+    filterResults(e.target.value);
   };
 
   return (
@@ -59,7 +59,7 @@ const Toolbar = ({ className, filterUsers, setOpenProgramaDialog, ...rest }) => 
                 </InputAdornment>
               )
             }}
-            placeholder="Buscar objetivo"
+            placeholder="Buscar programas"
             variant="outlined"
           />
         </Box>

@@ -443,14 +443,6 @@ const ProgramaView = () => {
           />
         </Container>
       }
-      {/* <IndicadorDialog
-        item={currentIndicador}
-        openDialog={openIndicadorDialog}
-        onClose={handleCloseIndicadorDialog}
-        onSave={handleSaveIndicador}
-        clientId={clientId}
-        options={{objetivoId}}
-      /> */}
       </>
     </Page>
   );

@@ -67,13 +67,7 @@ export default function SimpleModal({ item, openDialog, onSave, onClose, clientI
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
 
-  const [values, setValues] = useState({
-    nombre: item.nombre ? item.nombre : '',
-    contenido: item.contenido ? item.contenido : '',
-    actividades: item.actividades ? item.actividades : '',
-    objetivoId: options.objetivoId,
-    createdAt: item.createdAt ? item.createdAt : (new Date().getTime())
-  });
+  const [values, setValues] = useState({});
 
   const handleClose = () => {
     onClose();
